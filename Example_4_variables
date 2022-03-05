@@ -1,0 +1,28 @@
+// Example 4 - Setting and using variables - WokWi Simulator Code
+
+# include <FastLED.h>
+
+#define LED_PIN	5
+#define NUM_LEDS	50
+#define BRIGHTNESS	150
+#define SATURATION 	255
+#define COLOUR_ORDER	GRB
+#define LED_TYPE	WS2812
+CRGB leds[NUM_LEDS];
+
+int COLOUR = 100;
+
+void setup() {
+   pinMode(LED_PIN, OUTPUT);
+   FastLED.addLeds<LED_TYPE, LED_PIN, COLOUR_ORDER>(leds, NUM_LEDS);
+}
+
+void loop () {
+   fill_solid(leds, NUM_LEDS, CHSV(COLOUR, SATURATION, BRIGHTNESS));
+   FastLED.show();
+   delay(1000);
+   
+   fill_solid(leds, NUM_LEDS, CHSV(0, 0, 0));
+   FastLED.show();
+   delay(1000);   
+}

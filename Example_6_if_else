@@ -1,0 +1,40 @@
+// Example 6 - if else statementr - WokWi Simulator Code
+
+# include <FastLED.h>
+
+#define LED_PIN	5
+#define NUM_LEDS	50
+#define BRIGHTNESS	150
+#define SATURATION 	255
+#define COLOUR_ORDER	GRB
+#define LED_TYPE	WS2812
+CRGB leds[NUM_LEDS];
+
+int i = 0;
+
+void setup() {
+   pinMode(LED_PIN, OUTPUT);
+   FastLED.addLeds<LED_TYPE, LED_PIN, COLOUR_ORDER>(leds, NUM_LEDS);
+}
+
+void loop () {
+
+   i = i + 1;
+   
+   if (i < 5) {
+      fill_solid(leds, NUM_LEDS, CHSV(10, SATURATION, BRIGHTNESS));
+      FastLED.show();
+      delay(1000);
+   }
+   
+   else {
+      fill_solid(leds, NUM_LEDS, CHSV(200, SATURATION, BRIGHTNESS));
+      FastLED.show();
+      delay(1000);
+   } 
+   
+   fill_solid(leds, NUM_LEDS, CHSV(0, 0, 0));
+      FastLED.show();
+      delay(1000);  
+   
+}
